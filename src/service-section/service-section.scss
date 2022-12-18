@@ -1,0 +1,90 @@
+@mixin font($size, $line-height, $weight) {
+    line-height: $line-height;
+    font-size: $size;
+    font-weight: $weight;
+    letter-spacing: -0.01em;
+}
+
+$indents: 75px * 2;
+$mobile-width: 328px;
+
+$dark-color: #1F1F1F;
+$light-color: #FFFFFF;
+
+.service-section {
+    &__wrapper {
+        width: max((100% - $indents), $mobile-width);
+        margin-inline: auto;
+    }
+
+    &__title {
+        @include font(48px, 120%, 500);
+        color: $dark-color;
+        margin-bottom: 58px;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 80px;
+
+        border: 1px solid $dark-color;
+        border-radius: 100px;
+        background-color: unset;
+
+
+        @include font(24px, 120%, 500);
+        margin-top: 60px;
+
+        &:hover {
+            background-color: $dark-color;
+            color: $light-color;
+
+        }
+    }
+}
+
+.service-content {
+    display: flex;
+    gap: 30px;
+
+    &__image-wrapper {
+        flex: 1;
+        width: 100%;
+        height: 560px;
+
+        background-size: cover;
+        transition: all 1s;
+    }
+
+    &__accordion {
+        flex: 1;
+        border-top: 1px solid $dark-color;
+
+        & .card-wrapper {
+            border-bottom: 1px solid $dark-color;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .service-section {
+        &__title {
+            @include font(28px, 120%, 500);
+            margin-bottom: 20px;
+        }
+
+        &__button {
+            @include font(16px, 120%, 500);
+            height: 50px;
+        }
+    }
+    .service-content {
+        &__image-wrapper {
+            display: none;
+        }
+    }
+}
